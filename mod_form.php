@@ -67,12 +67,19 @@ class mod_interassign_mod_form extends moodleform_mod {
             $this->add_intro_editor();
         }
 
-        // Adding the rest of interassign settings, spreading all them into this fieldset
-        // ... or adding more fieldsets ('header' elements) if needed for better logic.
-        $mform->addElement('static', 'label1', 'interassignsetting1', 'Your interassign fields go here. Replace me!');
+        //AVAILABILITY INFORMATION
+        $mform->addElement('header', 'availability', get_string('availability', 'interassign'));
+        $mform->setExpanded('availability', true);
 
-        $mform->addElement('header', 'interassignfieldset', get_string('interassignfieldset', 'interassign'));
-        $mform->addElement('static', 'label2', 'interassignsetting2', 'Your interassign fields go here. Replace me!');
+        $name = get_string('allowsubmissionsfromdate', 'interassign');
+        $options = array('optional'=>true);
+        $mform->addElement('date_time_selector', 'allowsubmissionsfromdate', $name, $options);
+        $mform->addHelpButton('allowsubmissionsfromdate', 'allowsubmissionsfromdate', 'progassign');
+
+        $name = get_string('duedate', 'interassign');
+        $mform->addElement('date_time_selector', 'duedate', $name, array('optional'=>true));
+        $mform->addHelpButton('duedate', 'duedate', 'progassign');
+
 
         // Add standard grading elements.
         $this->standard_grading_coursemodule_elements();

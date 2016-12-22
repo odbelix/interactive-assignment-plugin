@@ -40,3 +40,10 @@ $string['interassignname_help'] = 'This is the content of the help tooltip assoc
 $string['interassign'] = 'interassign';
 $string['pluginadministration'] = 'interassign administration';
 $string['pluginname'] = 'interassign';
+
+
+$string['availability'] = 'Disponibilidad';
+$string['allowsubmissionsfromdate'] = 'Permitir entregas desde';
+$string['allowsubmissionsfromdate_help'] = 'Si está habilitado, los estudiantes no podrán hacer entregas antes de esta fecha. Si está deshabilitado, los estudiantes podrán comenzar las entregas de inmediato.';
+$string['duedate'] = 'Fecha de entrega';
+$string['duedate_help'] = 'Esto es cuando la Tarea ya se ha entregado. Todavía se permiten envíos después de esta fecha pero las tareas entregadas después de esta fecha se marcan como "retrasada". Para impedir envíos después de cierta fecha - ajustar la fecha de entrega de la tarea.';
