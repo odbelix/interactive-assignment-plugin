@@ -77,7 +77,7 @@ function interassign_supports($feature) {
 function interassign_add_instance(stdClass $interassign, mod_interassign_mod_form $mform = null) {
     global $DB;
 
-    $interassign->timecreated = time();
+    $interassign->createdat = time();
 
     // You may have to add extra stuff in here.
 
@@ -102,7 +102,7 @@ function interassign_add_instance(stdClass $interassign, mod_interassign_mod_for
 function interassign_update_instance(stdClass $interassign, mod_interassign_mod_form $mform = null) {
     global $DB;
 
-    $interassign->timemodified = time();
+    $interassign->lastchanges = time();
     $interassign->id = $interassign->instance;
 
     // You may have to add extra stuff in here.
@@ -170,6 +170,27 @@ function interassign_delete_instance($id) {
 
     return true;
 }
+
+
+/**
+ * Saves a new instance of short answer into the database
+ *
+ *
+ * @param stdClass $interassign_shortanswer
+ * @return int The id of the newly inserted record
+ */
+function interassign_shortanswer_add_instance(stdClass $interassign_shortanswer) {
+    global $DB;
+
+    $interassign_shortanswer->createdat = time();
+    $interassign_shortanswer->active    = 1;
+    $interassign_shortanswer->id = $DB->insert_record('interassign_shortanswer', $interassign_shortanswer);
+    return $interassign_shortanswer->id;
+}
+
+
+
+
 
 /**
  * Returns a small object with summary information about what a

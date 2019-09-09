@@ -50,15 +50,15 @@ class mod_interassign_mod_form extends moodleform_mod {
         $mform->addElement('header', 'general', get_string('general', 'form'));
 
         // Adding the standard "name" field.
-        $mform->addElement('text', 'name', get_string('interassignname', 'interassign'), array('size' => '64'));
+        $mform->addElement('text', 'name', get_string('interassigntitle', 'interassign'), array('size' => '64'));
         if (!empty($CFG->formatstringstriptags)) {
             $mform->setType('name', PARAM_TEXT);
         } else {
             $mform->setType('name', PARAM_CLEANHTML);
         }
         $mform->addRule('name', null, 'required', null, 'client');
-        $mform->addRule('name', get_string('maximumchars', '', 255), 'maxlength', 255, 'client');
-        $mform->addHelpButton('name', 'interassignname', 'interassign');
+        $mform->addRule('name', get_string('maximumchars', '', 200), 'maxlength', 200, 'client');
+        $mform->addHelpButton('name', 'interassigntitle', 'interassign');
 
         // Adding the standard "intro" and "introformat" fields.
         if ($CFG->branch >= 29) {
@@ -66,6 +66,22 @@ class mod_interassign_mod_form extends moodleform_mod {
         } else {
             $this->add_intro_editor();
         }
+
+        $ORDER = array('1'=>'Si', '0'=> 'No');
+
+        $mform->addElement('select', 'order',
+                get_string('order', 'interassign'),$ORDER);
+        $mform->addHelpButton('order', 'order', 'interassign');
+        //$mform->getElement('language')->setMultiple(true);
+
+        $mform->addElement('text', 'participants', get_string('participants', 'interassign'), array('size' => '10'));
+        $mform->addHelpButton('participants', 'participants', 'interassign');
+        $mform->setType('participants', PARAM_TEXT);
+
+        $mform->addRule('participants', null, 'required', null, 'client');
+        $mform->addRule('participants', get_string('maximumchars', '', 2), 'maxlength', 2, 'client');
+
+
 
         //AVAILABILITY INFORMATION
         $mform->addElement('header', 'availability', get_string('availability', 'interassign'));
